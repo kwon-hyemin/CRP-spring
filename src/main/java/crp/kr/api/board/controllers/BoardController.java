@@ -1,9 +1,5 @@
-package crp.kr.api.controllers;
+package crp.kr.api.board.controllers;
 
-import crp.kr.api.services.BoardServices;
-import crp.kr.api.services.UserServices;
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

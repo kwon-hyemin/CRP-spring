@@ -1,8 +1,7 @@
-package crp.kr.api.services;
+package crp.kr.api.auth.services;
 
-import crp.kr.api.domains.User;
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
+import crp.kr.api.auth.domains.User;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,7 +22,7 @@ public interface UserServices {
 
     String login(User user);
 
-    List<User> findAll();
+    List<User> findAll(Pageable pageable);
 
     String put(User user);
 
@@ -32,4 +31,8 @@ public interface UserServices {
     String save(User user);
 
     Optional<User> findById(String userid);
+
+    boolean existsById(String userid);
+
+    long count();
 }

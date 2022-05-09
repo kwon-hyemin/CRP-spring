@@ -1,8 +1,10 @@
-package crp.kr.api.repositories;
+package crp.kr.api.board.services;
+
+import org.springframework.stereotype.Repository;
 
 /**
- * packageName: crp.kr.api.repositories
- * fileName : BoardRepositories
+ * packageName: crp.kr.api.services
+ * fileName : BoardServices
  * author  : 권혜민
  * date   : 2022-05-04
  * desc   :
@@ -11,5 +13,6 @@ package crp.kr.api.repositories;
  * ================================
  * 2022-05-04     권혜민       최초 생성
  */
-public interface BoardRepositories {
+
+public interface BoardServices {
 }

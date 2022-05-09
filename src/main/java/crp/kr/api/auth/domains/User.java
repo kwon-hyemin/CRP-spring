@@ -1,4 +1,4 @@
-package crp.kr.api.domains;
+package crp.kr.api.auth.domains;
 
 import lombok.Data;
 import lombok.Generated;

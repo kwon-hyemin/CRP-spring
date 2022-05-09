@@ -1,7 +1,7 @@
-package crp.kr.api.repositories;
+package crp.kr.api.auth.repositories;
 
 
-import crp.kr.api.domains.User;
+import crp.kr.api.auth.domains.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,6 +17,9 @@ import org.springframework.stereotype.Repository;
  * 2022-05-03     권혜민       최초 생성
  */
 @Repository
-public interface
-UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
+
+    void put(User user);
+
+    String login(User user);
 }
