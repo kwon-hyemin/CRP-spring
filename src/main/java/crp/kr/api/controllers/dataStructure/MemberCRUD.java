@@ -1,4 +1,4 @@
-package crp.kr.api.dataStructure;
+package crp.kr.api.controllers.dataStructure;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
