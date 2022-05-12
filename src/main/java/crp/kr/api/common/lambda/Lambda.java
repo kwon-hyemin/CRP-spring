@@ -1,11 +1,11 @@
 package crp.kr.api.common.lambda;
 
-import java.util.Arrays;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import crp.kr.api.common.dataStructure.AppleList;
 
-import static crp.kr.api.common.dataStructure.AppleList.Apple;
+import java.io.File;
+import java.util.Arrays;
+import java.util.Random;
+import java.util.function.*;
 
 /**
  * packageName: crp.kr.api.common.lambda
@@ -22,17 +22,20 @@ public class Lambda {
     public static void main(String[] args) {
 //        System.out.println(Lambda.integer("900"));
 //        System.out.println(string(2));
-//        System.out.println(string(new Apple.Builder().origin("영동").color("RED").price(3000).build()));
+//        System.out.println(string(new AppleList.Apple.Builder().origin("영동").color("RED").price(3000).build()));
 //        System.out.println(
 //                string(
 //                        Arrays.asList(
-//                                new Apple.Builder().origin("영동").color("RED").price(3000).build(),
-//                                new Apple.Builder().origin("영동").color("RED").price(3000).build(),
-//                                new Apple.Builder().origin("영동").color("RED").price(3000).build()
+//                                new AppleList.Apple.Builder().origin("영동").color("RED").price(3000).build(),
+//                                new AppleList.Apple.Builder().origin("영동").color("RED").price(3000).build(),
+//                                new AppleList.Apple.Builder().build()
 //                        ))
 //                        );
 //        System.out.println(equals("2","3"));
-        System.out.println(array(8).length);
+//        System.out.println(array(8).length);
+//        System.out.println(random2(1,6));
+        System.out.println(random3(1, 6));
+
     }
     public static int integer(String arg){
         Function<String, Integer> f = Integer::parseInt;
@@ -62,5 +65,33 @@ public class Lambda {
     // return 값 int
     // int p = random(1, 6);
     // int player =(int)(Math.random()*6)+1;
+//    public static int random(int i, int i1){
+//        Consumer<Random> c = Random;
+//    }
+
+//    double random(int i, int i1){
+//        BiFunction<Integer, Integer, Double> c = Random::new;
+//        return c.apply(i , i1);
+//    }
+
+    String choi(int i){
+        Function<Integer, String> c = String::valueOf;
+        return c.apply(i);
+    }
+//        Consumer<Integer> f3 = Math::random;n
+    public static double random2(int min, int max){
+        Supplier<Double> s = Math::random;
+        return ((int)(s.get()*max)+min);
+    }
+    public static int random3(int min, int max){
+        BiFunction<Integer, Integer, Integer> f = (f1, f2) ->  (int)(Math.random()*f1)+f2;
+        return f.apply(min, max);
+    }
+// File file = new File (d:\\ example\\new_directory);
+    public static File makefile(String m){
+        Function<String , File> f = File::new;
+        return f.apply(m);
+    }
+
 
 }
