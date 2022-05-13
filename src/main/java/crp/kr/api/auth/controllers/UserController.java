@@ -31,35 +31,35 @@ public class UserController {
     public String login(@RequestBody User user) {
         return service.login(user);
     }
+
     @GetMapping("/logout")
     public String logout() {
         return "";
     }
+    @PutMapping("/put")
+    public String put(@RequestBody User user) {
+        return service.put(user);
+    }
 
+    // Embeded Methods
     @GetMapping("/findAll")
     public List<User> findAll() {
-        Pageable pageable = null;
-        return service.findAll(pageable);
+        return service.findAll();
     }
 
     @GetMapping("/findAll/sort")
     public List<User> findAll(Sort sort) {
-        return service.findAll((Pageable) sort);
+        return service.findAll(sort);
     }
 
     @GetMapping("/findAll/pageable")
     public Page<User> findAll(Pageable pageable) {
-        return (Page<User>) service.findAll(pageable);
+        return service.findAll(pageable);
     }
 
     @GetMapping("/count")
     public long count() {
         return service.count();
-    }
-
-    @PutMapping("/put")
-    public String put(@RequestBody User user) {
-        return service.put(user);
     }
 
     @DeleteMapping("/delete")
@@ -81,6 +81,4 @@ public class UserController {
     public boolean existsById(@PathVariable String userid) {
         return service.existsById(userid);
     }
-
-
 }

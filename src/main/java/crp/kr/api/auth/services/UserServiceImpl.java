@@ -2,11 +2,13 @@ package crp.kr.api.auth.services;
 
 
 import crp.kr.api.auth.domains.User;
+import crp.kr.api.auth.repositories.UserRepository;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * packageName: crp.kr.api.services
@@ -20,7 +22,14 @@ import java.util.Optional;
  * 2022-05-03     권혜민       최초 생성
  */
 @Service
-public class UserServiceimpl implements UserServices{
+public class UserServiceImpl implements UserServices{
+
+    private final UserRepository repository;
+
+    public UserServiceImpl(UserRepository repository) {
+        this.repository = repository;
+    }
+
 
     @Override
     public String login(User user) {
@@ -28,8 +37,18 @@ public class UserServiceimpl implements UserServices{
     }
 
     @Override
-    public List<User> findAll(Pageable pageable) {
+    public List<User> findAll() {
         return null;
+    }
+
+    @Override
+    public Page<User> findAll(Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public long count() {
+        return 0;
     }
 
     @Override
@@ -58,7 +77,12 @@ public class UserServiceimpl implements UserServices{
     }
 
     @Override
-    public long count() {
-        return 0;
+    public List<User> findByUserName(String name) {
+        return null;
+    }
+
+    @Override
+    public List<User> findAll(Sort sort) {
+        return null;
     }
 }

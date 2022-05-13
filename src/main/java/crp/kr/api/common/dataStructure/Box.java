@@ -4,12 +4,16 @@ import lombok.Data;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
+import crp.kr.api.auth.domains.User;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * packageName: crp.kr.api.common.dataStructure
- * fileName : Box
+ * fileName : Trunk
  * author  : 권혜민
  * date   : 2022-05-12
  * desc   :
@@ -18,19 +22,51 @@ import java.util.List;
  * ================================
  * 2022-05-12     권혜민       최초 생성
  */
-@Component @Data @Lazy // 순수자바 객체로 사용, Lazy DB가 필요 없다. 즉시 실행하지않고 호출 햇을때 실행한다 임시 저장소
-//제네릭은 하나만 만들어서 넣어버리면 된다
-public class Box<T>{
-    private ArrayList<T> list;
-    // save update delete findAll findByName findById count existsById clear
-    // add, set, remove, get(), X, get(i), size,X , clear
+//Hash
+@Component @Data @Lazy // T = Vector t = vector = new component()
+public class Box<K, V> {
+    private HashMap<K, V> map;
+    public Box() {
+        this.map = new HashMap<>();
+    }
+    // 반드시 구현할 공통기능
+    public void put(K k , V v){map.put(k , v);}
+    public void replace(K k , V v){map.replace(k ,v);}
+    public void remove(K k , V v){map.remove(k , v);}
+    public List<V> values(){return map.values().stream().collect(Collectors.toList());}
+    public V get(String id){return map.get(id);}
+    public int size(){return map.size();}
+    public void clear(){map.clear();}
+    // 테이블 행목록요청시
+    public List<V> findAllList() {
+        List<V> ls = new ArrayList<>();
+        for (Map.Entry<K, V> e: map.entrySet()) {
+            ls.add((V)e.getValue());
+        }
+        return ls;
+    }
+    // 테이블 키값 목록요청시
+    public List<V> findAllKeyList() {
+        List<V> ls = new ArrayList<>();
+        for (Map.Entry<K, V> e: map.entrySet()) {
+            ls.add((V)e.getValue());
+        }
+        return ls;
+    }
+    // 이름으로 검색된 회원 목록요청시(필터가 필요없이 리액트로 던지는 경우)
+    public List<User> findByUserName(String name) {
+        List<User> ls = new ArrayList<>();
+        for (User v : ls) {  if (name.equals(v.getName())) ls.add(v); }
+        return ls;
+    }
+    // 이름으로 검색된 회원 목록요청시(추가 필터를 통해 더 줄어든 결과값이 필요한 경우)
+    public Map<String, User> mapFindByUserName(String name){
+        Map<String, User> map = new HashMap<>();
+        for (Map.Entry<String, User> e : map.entrySet()) {
+            if (name.equals(e.getValue().getName())) map.put(e.getKey(), e.getValue());
+        }
+        return map;
+    }
 
-    public Box(){this.list = new ArrayList<>();}
-    public void add(T t){list.add(t);};
-    public void set(int i, T t){list.set(i, t);}
-    public void remove(T t){list.remove(t);}
-    public ArrayList<T> get(){ return list;}
-    public T get(int i){ return list.get(i);}
-    public int size(){ return list.size();}
-    public void clear(){list.clear();}
+
 }
