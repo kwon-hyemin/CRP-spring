@@ -22,25 +22,25 @@ import java.util.Scanner;
 public class BmiList {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
-        AppleList.AppleService service = new AppleList.AppleServiceImpl();
+        AppleApp.AppleService service = new AppleApp.AppleServiceImpl();
         while(true){
             System.out.println("0.exit 1.save 2.update 3.delete 4.findById 5.findByOrigin 6.findAll 7.count 8.existsById 9.clear");
             switch (s.next()){
                 case "0":return;
                 case "1":
-                    AppleList.Apple yd = new AppleList.Apple.Builder()
+                    AppleApp.Apple yd = new AppleApp.Apple.Builder()
                             .origin("영동")
                             .color("RED")
                             .price(1000)
                             .build();
                     service.save(yd);
-                    AppleList.Apple yd2 = new AppleList.Apple.Builder()
+                    AppleApp.Apple yd2 = new AppleApp.Apple.Builder()
                             .origin("영동")
                             .color("BLUE")
                             .price(1500)
                             .build();
                     service.save(yd2);
-                    AppleList.Apple pg = new AppleList.Apple.Builder()
+                    AppleApp.Apple pg = new AppleApp.Apple.Builder()
                             .origin("풍기")
                             .color("RED")
                             .price(2000)

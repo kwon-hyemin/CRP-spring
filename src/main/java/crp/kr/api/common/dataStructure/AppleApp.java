@@ -1,13 +1,10 @@
 package crp.kr.api.common.dataStructure;
 
-import static crp.kr.api.common.lambda.Lambda.*;
+import static crp.kr.api.common.lambdas.Lambda.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import java.util.*;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 /**
  * packageName: crp.kr.api.common.dataStructure
@@ -21,7 +18,7 @@ import java.util.stream.Collectors;
  * 2022-05-11     권혜민       최초 생성
  */
 // Apple color price origin ( 영동 풍기 )
-public class AppleList {
+public class AppleApp {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         AppleService service = new AppleServiceImpl();

@@ -1,10 +1,6 @@
-package crp.kr.api.common.lambda;
-
-import crp.kr.api.common.dataStructure.AppleList;
+package crp.kr.api.common.lambdas;
 
 import java.io.File;
-import java.util.Arrays;
-import java.util.Random;
 import java.util.function.*;
 
 /**
