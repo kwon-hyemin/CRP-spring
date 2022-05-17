@@ -22,4 +22,5 @@ public class MyLambda {
     @FunctionalInterface interface MyUnaryOp{int operator(Integer a);}
     @FunctionalInterface interface LengthOfString{int execute(String arg);} //비밀번호 몇개 이상
     @FunctionalInterface interface MathOperation{int execute(int a, int b);}
+
 }

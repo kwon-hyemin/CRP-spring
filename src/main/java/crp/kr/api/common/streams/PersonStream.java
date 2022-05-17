@@ -26,26 +26,24 @@ public class PersonStream {
     @AllArgsConstructor
     public static class Person{
         private String name, ssn;
-
+        private Boolean getGenderCheckr(String ssnGenderPos){
+            return ssn.substring(7,8).equals(ssnGenderPos);
+        }
         @Override
         public String toString() {
-            String gender = (ssn.substring(7,8).equals("1") || ssn.substring(7,8).equals("3"))? "남자" : "여자";
-//            String age = ();
-            return String.format("이름: %s 성별:%s", name, gender);
+            String gender = (getGenderCheckr("1") || getGenderCheckr("3"))? "남자" : "여자";
+            int year = Integer.parseInt(ssn.substring(0,2));
+            if(getGenderCheckr("1")){year+= 1900;}
+            else if(getGenderCheckr("2")){year+= 1900;}
+            else {year += 2000;}
+            String age = String.valueOf(2022 - year + 1); //1의 의미는 한국식나이
+            return String.format("이름: %s 성별: %s 나이: %s", name,gender,age);
         }
 
     }
     // 기능 : 회원검색
-    interface PersonService{ Person search(List<Person> persons);}
-    public static class PersonServiceImpl implements PersonService{
-        @Override
-        public Person search(List<Person> persons) {
-            return persons
-                    .stream()
-                    .filter(e -> e.getName().equals("유관순"))
-                    .collect(Collectors.toList()).get(0);
-        }
-    }
+    @FunctionalInterface interface PersonService{ Person search(List<Person> persons);}
+
     @Test
     void personStreamTest(){
         //:"홍길동","900120-1"
@@ -57,7 +55,11 @@ public class PersonStream {
                 Person.builder().name("김유신").ssn("970120-1").build(),
                 Person.builder().name("유관순").ssn("040120-4").build()
         );
+        PersonService ps = persons -> persons
+                .stream()
+                .filter(e -> e.getName().equals("김유신"))
+                .collect(Collectors.toList()).get(0);
 
-        System.out.println( new PersonServiceImpl().search(l));
+        System.out.println(ps.search(l));
     }
 }
