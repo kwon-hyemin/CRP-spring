@@ -1,7 +1,7 @@
 package crp.kr.api.auth.services;
 
 
-import crp.kr.api.auth.domains.User;
+import crp.kr.api.auth.domains.Users;
 import crp.kr.api.auth.repositories.UserRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,17 +32,17 @@ public class UserServiceImpl implements UserServices{
 
 
     @Override
-    public String login(User user) {
+    public String login(Users user) {
         return null;
     }
 
     @Override
-    public List<User> findAll() {
+    public List<Users> findAll() {
         return null;
     }
 
     @Override
-    public Page<User> findAll(Pageable pageable) {
+    public Page<Users> findAll(Pageable pageable) {
         return null;
     }
 
@@ -52,22 +52,22 @@ public class UserServiceImpl implements UserServices{
     }
 
     @Override
-    public String put(User user) {
+    public String put(Users user) {
         return null;
     }
 
     @Override
-    public String delete(User user) {
+    public String delete(Users user) {
         return null;
     }
 
     @Override
-    public String save(User user) {
+    public String save(Users user) {
         return null;
     }
 
     @Override
-    public Optional<User> findById(String userid) {
+    public Optional<Users> findById(String userid) {
         return Optional.empty();
     }
 
@@ -77,12 +77,12 @@ public class UserServiceImpl implements UserServices{
     }
 
     @Override
-    public List<User> findByUserName(String name) {
+    public List<Users> findByUserName(String name) {
         return null;
     }
 
     @Override
-    public List<User> findAll(Sort sort) {
+    public List<Users> findAll(Sort sort) {
         return null;
     }
 }

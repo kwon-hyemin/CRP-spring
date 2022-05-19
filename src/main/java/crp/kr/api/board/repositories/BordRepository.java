@@ -1,6 +1,6 @@
 package crp.kr.api.board.repositories;
 
-import crp.kr.api.auth.domains.User;
+import crp.kr.api.auth.domains.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,5 +16,5 @@ import org.springframework.stereotype.Repository;
  * 2022-05-09     권혜민       최초 생성
  */
 @Repository
-public interface BordRepository extends JpaRepository<User, Long> {
+public interface BordRepository extends JpaRepository<Users, Long> {
 }

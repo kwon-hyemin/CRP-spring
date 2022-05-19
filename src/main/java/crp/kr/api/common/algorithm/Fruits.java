@@ -18,12 +18,20 @@ import org.junit.jupiter.api.Test;
  * 2022-05-17     권혜민       최초 생성
  */
 // 36p
-//public class Fruits {
-//    @Builder @Getter @AllArgsConstructor @NoArgsConstructor
-//    static class Solution{
-//
-//    }
-//    @FunctionalInterface interface SolutionService { Solution solution(Solution solution);}
-//    @Test
-//    void solutionTest(){}
-//}
+public class Fruits {
+    @Builder @Getter @AllArgsConstructor @NoArgsConstructor
+    private static class Solution{
+        private int total, apple, grape, orange;
+
+        @Override
+        public String toString() {
+            return String.format("total: %d, ");
+        }
+    };
+
+
+    @FunctionalInterface interface ISolution { Solution solution(Solution s);}
+    @Test
+    void solutionTest(){}
+    }
+

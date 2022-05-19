@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -25,23 +24,50 @@ import java.util.Arrays;
 public class RemoveDuplicatedElementsArray {
     @Builder @Getter @AllArgsConstructor @NoArgsConstructor
     private static class Solution{
-        private int[] ls;
-        private int[] arr;
+        private int arr;// 원래잇는
         @Override
         public String toString() {
-            return String.format("새배열: %d", ls);
+            return String.format("새배열: %d", arr);
         }
     }
-    @FunctionalInterface interface SolutionService{ Solution solution (Solution s);}
+    //배열를 Set 타입으로 변환
+    @FunctionalInterface private interface SolutionService{ Solution solution(Solution s);}
     @Test
     void solutionTest(){
-        int[] arr = {5, 10, 9, 27, 2, 8, 10, 4, 27, 1};
 //        int[] resultArr = Arrays.stream(arr).distinct().toArray(int[]::new);
 //        arr = Arrays.stream(arr).distinct().toArray(String[]::new);
-        SolutionService f = e ->  {
-
-            return Solution.builder().build();
-        };
+//        SolutionService f = e ->  {
+//            String[] ls = Arrays.stream(arr).distinct().toArray(String[]::new);// ls에 값 잘담김
+//            return Solution.builder().ls(ls).build();};  // ls 값 중복빼고 잘들어옴
+//        Solution s = Solution.builder().arr(arr).build();// arr == string[]arr 값이랑 같음
+//        System.out.println(f.solution(s));
+//        String[] arr = {"5", "10", "9", "27", "2"," 8", "10", "4", "27", "1"};
+//        SolutionService f = e-> {
+//            HashSet<String> hashSet = new HashSet<>(Arrays.asList(arr));// 배열을 HashSet 으로 변환
+//            String[] ls = hashSet.toArray(new String[0]); // HashSet 을 배열로 변환
+//            return Solution.builder().arr(Arrays.toString(ls)).build();}; // Solution 객체를 String 배열 ls 로 리턴
+//        Solution s = Solution.builder().build();//
+//        System.out.println(f.solution(s));
+//        String[] arr = {"5", "10", "9", "27", "2"," 8", "10", "4", "27", "1"};
+//        SolutionService f = e -> {
+//            String[] ls = (String[]) Arrays.stream(arr).distinct().toArray();
+//          return Solution.builder().arr(Arrays.toString(ls)).build();
+//        };
+//        Solution s = Solution.builder().build();
+//        System.out.println(f.solution(s));
+//        Integer[] arr = {5, 10, 9, 27, 2, 8, 10, 4, 27, 1};
+//        SolutionService f = e ->{
+//            Set<Integer> set = new HashSet<Integer>(Arrays.asList(arr));// 배열을 객체로 변환
+//            Integer[] ls = set.toArray(new Integer[0]);
+//            return Solution.builder().arr(Integer.parseInt(Arrays.toString(ls))).build();};
+//        Solution s = Solution.builder().build();
+//        System.out.println(f.solution(s));
+        int[] arr = {5, 10, 9, 27, 2, 8, 10, 4, 27, 1};
+        SolutionService f = e ->{
+            int[] ls = Arrays.stream(arr).distinct().toArray();
+            return Solution.builder().arr(Integer.parseInt(Arrays.toString(ls))).build();};
+        Solution s = Solution.builder().build();
+        System.out.println(f.solution(s));
     }
 
 }

@@ -1,6 +1,6 @@
 package crp.kr.api.auth.services;
 
-import crp.kr.api.auth.domains.User;
+import crp.kr.api.auth.domains.Users;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -22,28 +22,28 @@ import java.util.Optional;
 //추상 메소드만 가지고 잇음
 public interface UserServices {
 
-    String login(User user);
+    String login(Users user);
 
-    List<User> findAll();
+    List<Users> findAll();
 
-    List<User> findAll(Sort sort);
+    List<Users> findAll(Sort sort);
 
-    Page<User> findAll(Pageable pageable);
+    Page<Users> findAll(Pageable pageable);
 
     long count();
 
-    String put(User user);
+    String put(Users user);
 
-    String delete(User user);
+    String delete(Users user);
 
-    String save(User user);
+    String save(Users user);
 
-    Optional<User> findById(String userid);
+    Optional<Users> findById(String userid);
 
     boolean existsById(String userid);
 
     // custom
 
-    List<User> findByUserName(String name);
+    List<Users> findByUserName(String name);
 
 }
