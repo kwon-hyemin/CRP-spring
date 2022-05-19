@@ -85,4 +85,9 @@ public class UserServiceImpl implements UserServices{
     public List<Users> findAll(Sort sort) {
         return null;
     }
+
+
+    public String test(){
+        return "테스트";
+    }
 }

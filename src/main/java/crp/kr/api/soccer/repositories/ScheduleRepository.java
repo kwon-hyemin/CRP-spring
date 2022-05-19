@@ -1,5 +1,7 @@
 package crp.kr.api.soccer.repositories;
 
+import crp.kr.api.soccer.domains.Stadium;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -13,6 +15,12 @@ import org.springframework.stereotype.Repository;
  * ================================
  * 2022-05-09     권혜민       최초 생성
  */
+
+interface ScheduleCustomRepository{
+
+}
+
 @Repository
-public interface ScheduleRepository {
+public interface ScheduleRepository extends JpaRepository<Stadium, Long>, TeamCustomRepository{
+
 }
