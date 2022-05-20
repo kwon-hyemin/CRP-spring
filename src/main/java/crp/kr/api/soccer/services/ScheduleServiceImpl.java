@@ -4,10 +4,10 @@ import crp.kr.api.soccer.domains.Schedule;
 import crp.kr.api.soccer.repositories.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,11 +24,21 @@ import java.util.Optional;
  */
 @Service
 @RequiredArgsConstructor
-public class ScheduleServiceimpl implements ScheduleServices{
-    private final ScheduleRepository scheduleRepositores;
+public class ScheduleServiceImpl implements ScheduleService{
+    private final ScheduleRepository repository;
 
     @Override
     public List<Schedule> findAll() {
+        return null;
+    }
+
+    @Override
+    public List<Schedule> findAll(Sort sort) {
+        return null;
+    }
+
+    @Override
+    public Page<Schedule> findAll(Pageable pageable) {
         return null;
     }
 
@@ -38,32 +48,22 @@ public class ScheduleServiceimpl implements ScheduleServices{
     }
 
     @Override
-    public String delete(Schedule schedule) {
+    public String delete(Schedule player) {
         return null;
     }
 
     @Override
-    public String save(Schedule schedule) {
+    public String save(Schedule player) {
         return null;
     }
 
     @Override
-    public Optional<Schedule> findById(String scheduleid) {
+    public Optional<Schedule> findById(String playerid) {
         return Optional.empty();
     }
 
     @Override
-    public boolean existsById(String scheduleid) {
+    public boolean existsById(String playerid) {
         return false;
-    }
-
-    @Override
-    public Page<Schedule> findAll(Pageable pageable) {
-        return null;
-    }
-
-    @Override
-    public List<Schedule> findAll(Sort sort) {
-        return null;
     }
 }

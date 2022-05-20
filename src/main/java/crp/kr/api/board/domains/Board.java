@@ -1,7 +1,10 @@
 package crp.kr.api.board.domains;
 
-import lombok.Data;
+import com.sun.istack.NotNull;
+import lombok.*;
 import org.springframework.stereotype.Component;
+
+import javax.persistence.*;
 
 /**
  * packageName: crp.kr.api.domains
@@ -15,6 +18,17 @@ import org.springframework.stereotype.Component;
  * 2022-05-04     권혜민       최초 생성
  */
 @Data
-@Component //컴포넌트는 프로퍼티와 메소드의 집합
+@Component
+@Entity
+@Table(name="article")
 public class Board {
+    @Id Long id;
+
+    private String projects;
+    private String startDate;
+    private String status;
+    private String team;
+    private String progress;
+    private String action;
+
 }

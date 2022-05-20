@@ -1,7 +1,7 @@
 package crp.kr.api.soccer.controllers;
 
 import crp.kr.api.soccer.domains.Schedule;
-import crp.kr.api.soccer.services.ScheduleServices;
+import crp.kr.api.soccer.services.ScheduleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
@@ -22,11 +22,11 @@ import java.util.Optional;
  * ================================
  * 2022-05-09     권혜민       최초 생성
  */
-@RequiredArgsConstructor
 @RestController
-@RequestMapping("/Schedule")
+@RequiredArgsConstructor
+@RequestMapping("/schedules")
 public class ScheduleController {
-    private final ScheduleServices service;
+    private final ScheduleService service;
     @GetMapping("/findAll")
     public List<Schedule> findAll() {
         return service.findAll();
@@ -39,7 +39,7 @@ public class ScheduleController {
 
     @GetMapping("/findAll/pageable")
     public Page<Schedule> findAll(Pageable pageable) {
-        return service.findAll(pageable);
+        return service.findAll((org.springframework.data.domain.Pageable) pageable);
     }
 
     @GetMapping("/count")
@@ -48,25 +48,22 @@ public class ScheduleController {
     }
 
     @DeleteMapping("/delete")
-    public String delete(@RequestBody Schedule Schedule) {
-        return service.delete(Schedule);
+    public String delete(@RequestBody Schedule player) {
+        return service.delete(player);
     }
 
     @PostMapping("/join")
-    public String save(@RequestBody Schedule Schedule) {
-        return service.save(Schedule);
+    public String save(@RequestBody Schedule player) {
+        return service.save(player);
     }
 
-    @GetMapping("/findById/{Scheduleid}")
-    public Optional<Schedule> findById(@PathVariable String Scheduleid) {
-        return service.findById(Scheduleid);
+    @GetMapping("/findById/{playerid}")
+    public Optional<Schedule> findById(@PathVariable String playerid) {
+        return service.findById(playerid);
     }
 
-    @GetMapping("/existsById/{Scheduleid}")
-    public boolean existsById(@PathVariable String Scheduleid) {
-        return service.existsById(Scheduleid);
+    @GetMapping("/existsById/{playerid}")
+    public boolean existsById(@PathVariable String playerid) {
+        return service.existsById(playerid);
     }
-    
-
-
 }

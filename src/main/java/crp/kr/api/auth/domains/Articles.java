@@ -36,7 +36,7 @@ public class Articles {
 
     @ManyToOne (fetch = FetchType.LAZY) // 1
     @JoinColumn(name = "user_id") //
-    private Users i; // 2
+    private User i; // 2
 
     @ManyToOne
     @JoinColumn(name = "board_id")

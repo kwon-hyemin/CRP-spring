@@ -1,13 +1,13 @@
 package crp.kr.api.soccer.controllers;
 
 import crp.kr.api.soccer.domains.Player;
-import crp.kr.api.soccer.services.PlayerServices;
+import crp.kr.api.soccer.services.PlayerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,11 +22,12 @@ import java.util.Optional;
  * ================================
  * 2022-05-09     권혜민       최초 생성
  */
-@RequiredArgsConstructor
+
 @RestController
-@RequestMapping("/Player")
+@RequiredArgsConstructor
+@RequestMapping("/players")
 public class PlayerController {
-    private final PlayerServices service;
+    private final PlayerService service;
     @GetMapping("/findAll")
     public List<Player> findAll() {
         return service.findAll();
@@ -48,23 +49,24 @@ public class PlayerController {
     }
 
     @DeleteMapping("/delete")
-    public String delete(@RequestBody Player Player) {
-        return service.delete(Player);
+    public String delete(@RequestBody Player player) {
+        return service.delete(player);
     }
 
     @PostMapping("/join")
-    public String save(@RequestBody Player Player) {
-        return service.save(Player);
+    public String save(@RequestBody Player player) {
+        return service.save(player);
     }
 
-    @GetMapping("/findById/{Playerid}")
-    public Optional<Player> findById(@PathVariable String Playerid) {
-        return service.findById(Playerid);
+    @GetMapping("/findById/{playerid}")
+    public Optional<Player> findById(@PathVariable String playerid) {
+        return service.findById(playerid);
     }
 
-    @GetMapping("/existsById/{Playerid}")
-    public boolean existsById(@PathVariable String Playerid) {
-        return service.existsById(Playerid);
+    @GetMapping("/existsById/{playerid}")
+    public boolean existsById(@PathVariable String playerid) {
+        return service.existsById(playerid);
     }
-    
+
+
 }

@@ -28,7 +28,7 @@ import java.util.List;
 @Entity
 //@Eager
 @Table(name="users")
-public class Users {
+public class User {
     @Id
     @Column(name = "user_id")
     @GeneratedValue private long userId;

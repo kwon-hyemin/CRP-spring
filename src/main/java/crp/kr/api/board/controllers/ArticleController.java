@@ -22,11 +22,13 @@ import java.util.Optional;
  * ================================
  * 2022-05-09     권혜민       최초 생성
  */
-@RequiredArgsConstructor
 @RestController
-@RequestMapping("/Article")
+@RequiredArgsConstructor
+@RequestMapping("/article")
 public class ArticleController {
+
     private final ArticleServices service;
+
     @GetMapping("/findAll")
     public List<Article> findAll() {
         return service.findAll();
@@ -57,4 +59,13 @@ public class ArticleController {
         return service.save(article);
     }
 
+    @GetMapping("/findById/{article}")
+    public Optional<Article> findById(@PathVariable String article) {
+        return service.findById(article);
     }
+
+    @GetMapping("/existsById/{article}")
+    public boolean existsById(@PathVariable String article) {
+        return service.existsById(article);
+    }
+}

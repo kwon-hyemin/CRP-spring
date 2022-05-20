@@ -1,8 +1,8 @@
 package crp.kr.api.auth.controllers;
 
-import crp.kr.api.auth.services.UserServices;
+import crp.kr.api.auth.services.UserService;
 import lombok.RequiredArgsConstructor;
-import crp.kr.api.auth.domains.Users;
+import crp.kr.api.auth.domains.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -25,35 +25,32 @@ import java.util.Optional;
 @RestController//잇어야 DTO의 자식임을 알려줄수 있음
 @RequestMapping("/user")
 public class UserController {
-    private final UserServices service;
+    private final UserService service;
 
     @PostMapping("/login")
-    public String login(@RequestBody Users user) {
-        return service.login(user);
-    }
-
+    public String login(@RequestBody User user) {return service.login(user);}
     @GetMapping("/logout")
     public String logout() {
         return "";
     }
     @PutMapping("/put")
-    public String put(@RequestBody Users user) {
+    public String put(@RequestBody User user) {
         return service.put(user);
     }
 
     // Embeded Methods
     @GetMapping("/findAll")
-    public List<Users> findAll() {
+    public List<User> findAll() {
         return service.findAll();
     }
 
     @GetMapping("/findAll/sort")
-    public List<Users> findAll(Sort sort) {
+    public List<User> findAll(Sort sort) {
         return service.findAll(sort);
     }
 
     @GetMapping("/findAll/pageable")
-    public Page<Users> findAll(Pageable pageable) {
+    public Page<User> findAll(Pageable pageable) {
         return service.findAll(pageable);
     }
 
@@ -63,17 +60,17 @@ public class UserController {
     }
 
     @DeleteMapping("/delete")
-    public String delete(@RequestBody Users user) {
+    public String delete(@RequestBody User user) {
         return service.delete(user);
     }
 
     @PostMapping("/join")
-    public String save(@RequestBody Users user) {
+    public String save(@RequestBody User user) {
         return service.save(user);
     }
 
     @GetMapping("/findById/{userid}")
-    public Optional<Users> findById(@PathVariable String userid) {
+    public Optional<User> findById(@PathVariable String userid) {
         return service.findById(userid);
     }
 

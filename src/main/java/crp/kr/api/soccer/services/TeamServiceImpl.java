@@ -1,19 +1,19 @@
 package crp.kr.api.soccer.services;
 
-import crp.kr.api.soccer.domains.Player;
-import crp.kr.api.soccer.repositories.PlayerRepository;
+import crp.kr.api.soccer.domains.Team;
+import crp.kr.api.soccer.repositories.TeamRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 
 /**
  * packageName: crp.kr.api.soccer.services
- * fileName : PlayerServiceimpl
+ * fileName : Serviceimpl
  * author  : 권혜민
  * date   : 2022-05-09
  * desc   :
@@ -24,11 +24,26 @@ import java.util.Optional;
  */
 @Service
 @RequiredArgsConstructor
-public class PlayerServiceimpl implements PlayerServices{
-
+public class TeamServiceImpl implements TeamService {
+    private final TeamRepository repository;
 
     @Override
-    public List<Player> findAll() {
+    public String login(Team team) {
+        return null;
+    }
+
+    @Override
+    public List<Team> findAll() {
+        return null;
+    }
+
+    @Override
+    public List<Team> findAll(Sort sort) {
+        return null;
+    }
+
+    @Override
+    public Page<Team> findAll(Pageable pageable) {
         return null;
     }
 
@@ -38,32 +53,33 @@ public class PlayerServiceimpl implements PlayerServices{
     }
 
     @Override
-    public String delete(Player player) {
+    public String put(Team team) {
         return null;
     }
 
     @Override
-    public String save(Player player) {
+    public String delete(Team team) {
         return null;
     }
 
     @Override
-    public boolean existsById(String playerid) {
-        return false;
+    public String save(Team team) {
+
+        return null;
     }
 
     @Override
-    public Optional<Player> findById(String playerid) {
+    public Optional<Team> findById(String userid) {
         return Optional.empty();
     }
 
     @Override
-    public List<Player> findAll(Sort sort) {
-        return null;
+    public boolean existsById(String userid) {
+        return false;
     }
 
     @Override
-    public Page<Player> findAll(Pageable pageable) {
+    public List<Team> findByUserName(String name) {
         return null;
     }
 }

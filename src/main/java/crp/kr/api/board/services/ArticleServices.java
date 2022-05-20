@@ -24,9 +24,14 @@ public interface ArticleServices {
     List<Article> findAll(Sort sort);
     Page<Article> findAll(Pageable pageable);
 
+
     long count();
 
     String delete(Article article);
 
     String save(Article article);
+
+    Optional<Article> findById(String article);
+
+    boolean existsById(String article);
 }

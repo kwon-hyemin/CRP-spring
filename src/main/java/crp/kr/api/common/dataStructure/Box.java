@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
-import crp.kr.api.auth.domains.Users;
+import crp.kr.api.auth.domains.User;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -54,15 +54,15 @@ public class Box<K, V> {
         return ls;
     }
     // 이름으로 검색된 회원 목록요청시(필터가 필요없이 리액트로 던지는 경우)
-    public List<Users> findByUserName(String name) {
-        List<Users> ls = new ArrayList<>();
-        for (Users v : ls) {  if (name.equals(v.getName())) ls.add(v); }
+    public List<User> findByUserName(String name) {
+        List<User> ls = new ArrayList<>();
+        for (User v : ls) {  if (name.equals(v.getName())) ls.add(v); }
         return ls;
     }
     // 이름으로 검색된 회원 목록요청시(추가 필터를 통해 더 줄어든 결과값이 필요한 경우)
-    public Map<String, Users> mapFindByUserName(String name){
-        Map<String, Users> map = new HashMap<>();
-        for (Map.Entry<String, Users> e : map.entrySet()) {
+    public Map<String, User> mapFindByUserName(String name){
+        Map<String, User> map = new HashMap<>();
+        for (Map.Entry<String, User> e : map.entrySet()) {
             if (name.equals(e.getValue().getName())) map.put(e.getKey(), e.getValue());
         }
         return map;

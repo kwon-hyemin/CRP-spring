@@ -15,6 +15,12 @@ import org.springframework.stereotype.Repository;
  * ================================
  * 2022-05-09     권혜민       최초 생성
  */
+
+interface ArticleCustomRepository{
+    // 000. title 과 content 를 수정하시오
+    Article update(Article article);
+}
+
 @Repository
-public interface ArticleRepository extends JpaRepository<Article,Long> {
+public interface ArticleRepository extends JpaRepository<Article, Long> {
 }

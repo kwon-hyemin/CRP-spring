@@ -24,34 +24,48 @@ import java.util.Optional;
  */
 @Service
 @RequiredArgsConstructor
-public class ArticleServiceimpl implements ArticleServices {
-    private  final ArticleRepository articleRepository;
+public class ArticleServiceImpl implements ArticleServices {
+    private  final ArticleRepository repository;
+
     @Override
     public List<Article> findAll() {
-        return null;
+        return repository.findAll();
     }
+
     @Override
     public List<Article> findAll(Sort sort) {
-        return null;
+        return repository.findAll(sort);
     }
+
     @Override
     public Page<Article> findAll(Pageable pageable) {
-
-        return null;
+        return repository.findAll(pageable);
     }
+
     @Override
     public long count() {
-        return 0;
+        return repository.count();
     }
 
     @Override
     public String delete(Article article) {
-        return null;
+        repository.delete(article);
+        return "";
     }
 
     @Override
     public String save(Article article) {
-
+        repository.save(article);
         return "";
+    }
+
+    @Override
+    public Optional<Article> findById(String article) {
+        return Optional.empty();
+    }
+
+    @Override
+    public boolean existsById(String article) {
+        return false;
     }
 }

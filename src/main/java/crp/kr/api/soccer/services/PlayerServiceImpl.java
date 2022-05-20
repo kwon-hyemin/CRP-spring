@@ -1,49 +1,50 @@
-package crp.kr.api.auth.services;
+package crp.kr.api.soccer.services;
 
-
-import crp.kr.api.auth.repositories.UserRepository;
+import crp.kr.api.soccer.domains.Player;
+import crp.kr.api.soccer.repositories.PlayerRepository;
 import lombok.RequiredArgsConstructor;
-import crp.kr.api.auth.domains.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
 /**
- * packageName: crp.kr.api.services
- * fileName : Usererviceimpl
+ * packageName: crp.kr.api.soccer.services
+ * fileName : PlayerServiceimpl
  * author  : 권혜민
- * date   : 2022-05-03
+ * date   : 2022-05-09
  * desc   :
  * ================================
  * DATE        AUTHOR       NOTE
  * ================================
- * 2022-05-03     권혜민       최초 생성
+ * 2022-05-09     권혜민       최초 생성
  */
 @Service
 @RequiredArgsConstructor
-public class UserServiceImpl implements UserService{
-    private final UserRepository repository;
+public class PlayerServiceImpl implements PlayerService {
+    private final PlayerRepository repository;
+
 
     @Override
-    public String login(User user) {
+    public String login(Player Player) {
         return null;
     }
 
     @Override
-    public List<User> findAll() {
+    public List<Player> findAll() {
         return null;
     }
 
     @Override
-    public List<User> findAll(Sort sort) {
+    public List<Player> findAll(Sort sort) {
         return null;
     }
 
     @Override
-    public Page<User> findAll(Pageable pageable) {
+    public Page<Player> findAll(Pageable pageable) {
         return null;
     }
 
@@ -53,22 +54,22 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public String update(User user) {
+    public String put(Player Player) {
         return null;
     }
 
     @Override
-    public String delete(User user) {
+    public String delete(Player Player) {
         return null;
     }
 
     @Override
-    public String save(User user) {
+    public String save(Player Player) {
         return null;
     }
 
     @Override
-    public Optional<User> findById(String userid) {
+    public Optional<Player> findById(String userid) {
         return Optional.empty();
     }
 
@@ -78,12 +79,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public List<User> findByUserName(String name) {
-        return null;
-    }
-
-    @Override
-    public String put(User user) {
+    public List<Player> findByUserName(String name) {
         return null;
     }
 }
