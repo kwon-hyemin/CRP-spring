@@ -30,17 +30,14 @@ public interface StadiumService {
 
     long count();
 
-    String put(Stadium stadium);
-
     String delete(Stadium stadium);
 
     String save(Stadium stadium);
 
-    Optional<Stadium> findById(String userid);
+    Optional<Stadium> findById(String playerId);
 
-    boolean existsById(String userid);
+    boolean existsById(String playerId);
 
     // custom
 
-    List<Stadium> findByUserName(String name);
 }

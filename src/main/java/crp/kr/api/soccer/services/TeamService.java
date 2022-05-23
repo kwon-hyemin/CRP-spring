@@ -30,17 +30,14 @@ public interface TeamService {
 
     long count();
 
-    String put(Team team);
-
     String delete(Team team);
 
     String save(Team team);
 
-    Optional<Team> findById(String userid);
+    Optional<Team> findById(String playerId);
 
-    boolean existsById(String userid);
+    boolean existsById(String playerId);
 
     // custom
 
-    List<Team> findByUserName(String name);
 }

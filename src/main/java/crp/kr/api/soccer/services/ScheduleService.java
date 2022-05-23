@@ -28,11 +28,11 @@ public interface ScheduleService {
 
     long count();
 
-    String delete(Schedule player);
+    String delete(Schedule schedule);
 
-    String save(Schedule player);
+    String save(Schedule schedule);
 
-    Optional<Schedule> findById(String playerid);
+    Optional<Schedule> findById(String playerId);
 
-    boolean existsById(String playerid);
+    boolean existsById(String playerId);
 }

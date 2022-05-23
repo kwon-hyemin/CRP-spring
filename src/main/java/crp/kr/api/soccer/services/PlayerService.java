@@ -30,17 +30,15 @@ public interface PlayerService {
 
     long count();
 
-    String put(Player Player);
 
-    String delete(Player Player);
+    String delete(Player player);
 
-    String save(Player Player);
+    String save(Player player);
 
-    Optional<Player> findById(String userid);
+    Optional<Player> findById(String playerId);
 
-    boolean existsById(String userid);
+    boolean existsById(String playerId);
 
     // custom
 
-    List<Player> findByUserName(String name);
 }
