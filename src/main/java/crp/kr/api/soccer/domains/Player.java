@@ -1,11 +1,9 @@
 package crp.kr.api.soccer.domains;
 
-import crp.kr.api.auth.domains.Boards;
 import lombok.*;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * packageName: crp.kr.api.soccer.domains

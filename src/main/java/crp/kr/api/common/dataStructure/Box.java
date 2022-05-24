@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
-import crp.kr.api.auth.domains.User;
+import crp.kr.api.user.domains.User;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
