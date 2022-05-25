@@ -34,5 +34,5 @@ interface UserCustomRepository{
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    Optional<User> findByUsername(String username);
+    Optional<User> findByUsername(String username);  // null 일수도 잇고 아닐수도 잇음
 }

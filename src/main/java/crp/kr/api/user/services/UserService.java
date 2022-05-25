@@ -1,6 +1,8 @@
 package crp.kr.api.user.services;
 
+import crp.kr.api.auth.domains.Messenger;
 import crp.kr.api.user.domains.User;
+import crp.kr.api.user.domains.UserDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -22,7 +24,7 @@ import java.util.Optional;
 //추상 메소드만 가지고 잇음
 public interface UserService {
 
-    String login(User user);
+    UserDto login(User user);
 
     List<User> findAll();
 
@@ -30,22 +32,24 @@ public interface UserService {
 
     Page<User> findAll(Pageable pageable);
 
-    long count();
+    Messenger count();
 
-    String update(User user);
+    Messenger update(User user);
 
-    String delete(User user);
+    Messenger delete(User user);
 
-    String save(User user);
+    Messenger save(User user);
 
     Optional<User> findById(String userid);
 
-    boolean existsById(String userid);
+    Messenger existsById(String userid);
 
     // custom
 
     List<User> findByUserName(String name);
 
 
-    String put(User user);
+    Messenger put(User user);
+
+    Messenger logout();
 }

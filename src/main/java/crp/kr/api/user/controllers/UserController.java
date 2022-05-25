@@ -1,11 +1,14 @@
 package crp.kr.api.user.controllers;
 
+import crp.kr.api.auth.domains.Messenger;
+import crp.kr.api.user.domains.UserDto;
 import crp.kr.api.user.services.UserService;
 import lombok.RequiredArgsConstructor;
 import crp.kr.api.user.domains.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,14 +31,22 @@ public class UserController {
     private final UserService service;
 
     @PostMapping("/login")
-    public String login(@RequestBody User user) {return service.login(user);}
+    public ResponseEntity<UserDto> login(@RequestBody User user) {
+        return ResponseEntity.ok(service.login(user));//
+    }
     @GetMapping("/logout")
-    public String logout() {
-        return "";
+    public  ResponseEntity<Messenger> logout() {
+        return ResponseEntity.ok(service.logout());
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<Messenger> update(@RequestBody User user) {
+        return ResponseEntity.ok(service.update(user));
+
     }
     @PutMapping("/put")
-    public String put(@RequestBody User user) {
-        return service.put(user);
+    public ResponseEntity<Messenger> put(@RequestBody User user) {
+        return ResponseEntity.ok(service.put(user));
     }
 
     // Embeded Methods
@@ -55,18 +66,18 @@ public class UserController {
     }
 
     @GetMapping("/count")
-    public long count() {
-        return service.count();
+    public ResponseEntity<Messenger> count() {
+        return ResponseEntity.ok(service.count());
     }
 
     @DeleteMapping("/delete")
-    public String delete(@RequestBody User user) {
-        return service.delete(user);
+    public ResponseEntity<Messenger> delete(@RequestBody User user) {
+        return ResponseEntity.ok(service.delete(user));
     }
 
     @PostMapping("/join")
-    public String save(@RequestBody User user) {
-        return service.save(user);
+    public ResponseEntity<Messenger> save(@RequestBody User user) {
+        return ResponseEntity.ok(service.save(user));
     }
 
     @GetMapping("/findById/{userid}")
@@ -75,8 +86,8 @@ public class UserController {
     }
 
     @GetMapping("/existsById/{userid}")
-    public boolean existsById(@PathVariable String userid) {
-        return service.existsById(userid);
+    public ResponseEntity<Messenger> existsById(@PathVariable String userid) {
+        return ResponseEntity.ok(service.existsById(userid));
     }
 
 

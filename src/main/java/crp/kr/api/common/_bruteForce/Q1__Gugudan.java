@@ -1,4 +1,4 @@
-package crp.kr.api.common.algorithm;
+package crp.kr.api.common._bruteForce;
 
 import java.util.Random;
 import java.util.Scanner;

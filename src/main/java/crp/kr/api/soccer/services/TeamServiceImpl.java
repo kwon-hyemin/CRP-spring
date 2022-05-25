@@ -59,6 +59,7 @@ public class TeamServiceImpl implements TeamService {
 
     @Override
     public String save(Team team) {
+        boolean existUsernameCheck = false;
         repository.save(team);
         return null;
     }
