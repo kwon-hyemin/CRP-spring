@@ -24,7 +24,7 @@ import java.util.Optional;
 //추상 메소드만 가지고 잇음
 public interface UserService {
 
-    UserDto login(User user);
+    UserDto login(UserDto user);
 
     List<User> findAll();
 
@@ -38,7 +38,7 @@ public interface UserService {
 
     Messenger delete(User user);
 
-    Messenger save(User user);
+    Messenger save(UserDto user);
 
     Optional<User> findById(String userid);
 

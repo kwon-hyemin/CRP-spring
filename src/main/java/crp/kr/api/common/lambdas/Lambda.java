@@ -1,6 +1,8 @@
 package crp.kr.api.common.lambdas;
 
 import java.io.File;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.function.*;
 
 /**
@@ -32,6 +34,14 @@ public class Lambda {
 //        System.out.println(random2(1,6));
         System.out.println(random3(1, 6));
 
+    }
+//    public static String dataParse(){
+//        Supplier<Date> s = Date::new;
+//        return s.get();
+//    }
+    public static String date(){
+        Supplier<String> s = () -> string(LocalDate.now());
+        return s.get();
     }
     public static long longParse(String s){
         Function<String, Long> f = Long::parseLong;

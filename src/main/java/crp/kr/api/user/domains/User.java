@@ -25,6 +25,7 @@ import java.util.List;
 @NoArgsConstructor  // data 지우고 4개 추가
 //컴포넌트는 프로퍼티와 메소드의 집합이다.
 @Entity
+@Setter
 //@Eager
 @Table(name="users")
 public class User {

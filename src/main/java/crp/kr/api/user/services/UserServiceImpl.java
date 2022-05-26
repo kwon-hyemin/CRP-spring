@@ -19,8 +19,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
-import static crp.kr.api.common.lambdas.Lambda.longParse;
-import static crp.kr.api.common.lambdas.Lambda.string;
+import static crp.kr.api.common.lambdas.Lambda.*;
 
 /**
  * packageName: crp.kr.api.services
@@ -43,22 +42,34 @@ public class UserServiceImpl implements UserService{
 
 
     @Override
-    public UserDto login(User user) {
-        try{
-            UserDto userDTO = modelMapper.map(user, UserDto.class); //  userDTO 를 보내야함 userDB허용하면 큰일남 //dto 는 외부에서 노출되어있지 않음
-            User findUser  = repository.findByUsername(user.getUsername()).orElse(null);
-            String pw = repository.findByUsername(user.getUsername()).get().getPassword();
-            boolean checkPassword = encoder.matches(user.getPassword(), pw);
-            String username = user.getUsername(); // 사람이 인지하는 아이디
-            List<Role> roles = findUser.getRoles();
-            String token = checkPassword ? provider.createToken(username,roles) : "Wrong Password";  //이걸 인지하고 있어야함 고객한테 알려줘야해서 에러가 낫는데 비밀번호가 틀렸어요 해야함
-            userDTO.setToken(token);// dto의 임시박스
-            return userDTO;
-
-
+    public UserDto login(UserDto paramUser) {
+        try {
+            UserDto returnUser = new UserDto();
+            String username = paramUser.getUsername();
+            User findUser = repository.findByUsername(username).orElse(null);
+            if (findUser != null) {
+                boolean checkPassword = encoder.matches(paramUser.getPassword(), findUser.getPassword());
+                if (checkPassword) {
+                    returnUser = modelMapper.map(findUser, UserDto.class); //  userDTO 를 보내야함 userDB허용하면 큰일남 //dto 는 외부에서 노출되어있지 않음
+                    String token = checkPassword ? provider.createToken(username, returnUser.getRoles()) : "Wrong Password";  //이걸 인지하고 있어야함 고객한테 알려줘야해서 에러가 낫는데 비밀번호가 틀렸어요 해야함
+                    returnUser.setToken(token);
+                } else {
+                    String token = "FAILURE";
+                    returnUser.setToken(token);
+                }
+            }
+            return returnUser;
         }catch (Exception e){
             throw new SecurityRuntimeException("유효하지 않은 아이디/비밀번호", HttpStatus.UNPROCESSABLE_ENTITY); // 회사에 따라서 여러가지 인셉션을 걸수잇음
         }//문제가 생기면 처리하는 코드
+//        String pw = repository.findByUsername(user.getUsername()).get().getPassword();
+//
+//
+//        String username = user.getUsername(); // 사람이 인지하는 아이디
+//        List<Role> roles = findUser.getRoles();
+//
+//        userDTO.setToken(token);// dto의 임시박스
+//        return userDTO;
     }
 
     @Override
@@ -93,23 +104,28 @@ public class UserServiceImpl implements UserService{
         return Messenger.builder().build();
     }
 
+
     @Override
-    public Messenger save(User user) {
+    public Messenger save(UserDto user) {
+        System.out.println("서비스로 전달된 회원가입 정보: "+user.toString());
         String result = "";
-//        User o = repository.findByUsername(user.getUsername()).orElse(null);// null을 반납하게 만듬
-//        boolean existUsernameCheck = o == null;//null ? true:false;
         if(repository.findByUsername(user.getUsername()).isEmpty()){
             List<Role> list = new ArrayList<>();
             list.add(Role.USER);
-            repository.save(User.builder().password(encoder.encode(user.getPassword()))
+            repository.save(User.builder()
+                    .username(user.getUsername())
+                    .name(user.getName())
+                    .regDate(user.getRegDate())
+                    .email(user.getEmail())
+                    .password(encoder.encode(user.getPassword()))
                     .roles(list).build());
-//            return provider.createToken(user.getUsername(),user.getRoles());
             result = "SUCCESS";
-        }else {
+        }else{
             result = "FAIL";
         }
         return Messenger.builder().message(result).build();
     }
+
 
     @Override
     public Optional<User> findById(String userid) {
@@ -131,6 +147,11 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public Messenger put(User user) {
+        return null;
+    }
+
+    @Override
+    public Messenger logout() {
         return null;
     }
 }
